@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Soap Opera</title>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <a href="{% url 'laundry:index' %}">
+            <div class="symbol"></div>
+        </a>
+        <ul>
+            <li><a href="{% url 'laundry:index' %}#services">Services</a></li>
+            <li><a href="#" id="openLoc" onclick="openLoc()">Location</a></li>
+            <li><a href="#" id="openContact" onclick="openContact()">Contact</a></li>
+            <li><a href="#" id="openFAQ" onclick="openFAQ()">FAQs</a></li>
+            <li><a href="#" id="openLS" onclick="openLS()">Laundry Secrets</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section" id="home"> </div>
+
+    <div class="hero-content">
+        <h1>Wash. Rinse. Repeat.</h1>
+        <h1>THE DRAMA</h1>
+        <h1>Here at Soap Opera</h1>
+        <button onclick="openRe()"> Book a Reservation</button>
+        <button onclick="openStatus()"> Track Order</button>
+
+    </div>
+   
+
+    <div class="services" id="services">
+        <h2 id="servicesh">Our Services</h2>
+        <div class="service-item">
+            <h3>Wash & Fold</h3>
+            <img id='service-itemimg'src="/static/image/was.png">
+            <p>We Wash, We Fold, You Relax.</p>
+            <button onclick="openR()"> Book a Reservation</button>
+
+        </div>
+        <div class="service-item">
+            <h3>Express Cleaning Service</h3>
+            <img id="service-itemimg2" src="/static/image/ixpriss.png">
+            <p>Quick Clean, Big Gleam!</p>
+            <button onclick="openE()"> Book a Reservation</button>
+
+        </div>
+        <div class="service-item">
+            <h3>Dry Cleaning</h3>
+            <img id="service-itemimg3" src="/static/image/dry.png">
+            <p>Cleaning Done Right - Without a Single Drop.</p>
+            <button onclick="openD()"> Book a Reservation</button>
+
+        </div>
+    </div>
+       
+    <div class="modal_container" id="LS_modal">
+        <div class="modal_content">
+            <h2 id="modal_title">Laundry Tips and Tricks</h2>
+            <p id="modal_body1">1. Always sort your clothes before washing</p>
+            <p id="modal_answer">Sorting your clothes by fabric type, color, and level of stain can help preserve your clothes and avoid mishaps during laundry (i.e white shirts getting stained)</p>
+            <p id="modal_body1">2. How to remove different types of stains</p>
+            <p id="modal_answer">Blood = For fresh blood, soak it in cold water before laundry whereas for dried blood soak it in warm water before laundry.</p>
+            <p id="modal_answer">Red Wine = Soak it some white vinegar with some light laundry detergent then after 20 minutes wash.</p>
+            <p id="modal_answer">Coffee = Soak it in hot water before laundry.</p>
+            <p id="modal_body1">3. Not every fabric is machine or hand-washable</p>
+            <p id="modal_answer">Know when to dry clean for fabrics like leather and suede or even oil grease stains to avoid damaging it.</p>
+            <p id="modal_body1">4. Prep your clothes before washing</p>
+            <p id="modal_answer">Zip zippers, close whatever is necessary except when dealing with buttons as closing buttons can damage the buttons themselves.</p>
+            <p id="modal_body1">5. Be very gentle when dealing with baby clothes</p>
+            <p id="modal_answer"> Normal detergents can irritate babies' skins so use mild soaps and avoid softeners. </p>
+            <p id="modal_body1">6. Don't forget to read the clothes' tags to check what fabric it is.</p>
+            <p id="modal_answer"> Some fabrics like wool can tolerate dry cleaning and hand-washing like wool and others but can't tolerate machine washing because of its delicate nature.</p>
+
+
+        </div>
+    </div>
+
+    
+    <div class="modal_container" id="contact_modal">
+        <div class="modal_content">
+          <h2 id="modal_title">Contact Us</h2>
+          <p id="modal_body"> Email:  </p>
+          <p id="modal_bodyj">soapopera@gmail.com </p>
+          <p id="modal_body"> Phone: </p>
+          <p id="modal_bodyj">09123456789 </p>
+          <p id="modal_body"> Facebook: </p>
+          <p id="modal_bodyj">Soap Opera</p>
+          <p id="modal_body"> You can also contact: </p>
+          <p id="modal_bodyj">Gevie Desamero Alvarez </p>
+          <p id="modal_bodyj"> Alexa Amarille</p>
+          <p id="modal_bodyj"> Ricci Flores</p>
+          <p id="modal_bodyj"> Warren Bien Daep</p>
+          <p id="modal_bodyj"> Gino Espinas</p>
+        </div>
+      </div>
+
+
+    <div class="modal_container" id="faq_modal">
+        <div class="modal_content">
+          <h2 id="modal_title">FAQs</h2>
+          <p id="modal_body1">Where is our store located?</p>
+          <p id="modal_answer">Osmena Street, Masbate City</p>
+
+          <p id="modal_body1">Do you offer deliveries?</p>
+          <p id="modal_answer">Yes! In fact, we do.</p>
+
+          <p id="modal_body1"> Mamser mawawala ba mga pinalabahan namin?</p>
+          <p id="modal_answer">99.9% Guarantee walang mawawala! If in the event na meron, sagot na ng aming store ang compensation depending on the item lost (if confirmed to be lost during service).</p>
+        
+          <p id="modal_body1"> Kailangan pa ba magpareserve para makapag-gamit ng services namin?</p>
+          <p id="modal_answer">We also accept walk-in customers!</p>
+
+          <p id="modal_body1"> Why choose the name Soap Opera?</p>
+          <p id="modal_answer">Soap Opera is fitting when you want your clothes to look good, smell good, without the drama of doing it yourself. Rinse, dry, encore!</p>
+        </div>
+    </div>
+
+    <div class="modal_container" id="loc_modal">
+        <div class="modal_content">
+            <h2 id="modal_title">Location</h2>
+            <img id="service-itemimg4" src="/static/image/loc.png">
+            
+            <a id="link" href="https://www.google.com/maps/place/Osme%C3%B1a+Colleges,+Inc./@12.3710915,123.6193614,19.25z/data=!4m6!3m5!1s0x33a6dbd92680dc33:0x25137ebf0b601b84!8m2!3d12.3710574!4d123.6198431!16s%2Fg%2F11ss9_k_4c?entry=ttu&g_ep=EgoyMDI1MDYxNS4wIKXMDSoASAFQAw%3D%3D">View in Google Maps</a>
+        </div>
+    </div>
+
+    <div class="modal_container" id="Re_modal">
+    <div class="modal_content">
+        <div class="modal_header">
+            <h2 id="modal_title">Reservation</h2>
+        </div>
+        <div class="modal_body">
+            <form id="modal_form" class="validation-form" action="{% url 'laundry:index' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Full Name</label>
+                {{ form.name }}
+                <small class="form-text">{{ form.name.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                {{ form.phone_number }}
+                <small class="form-text">{{ form.phone_number.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.service_type.id_for_label }}">Service Type</label>
+                {{ form.service_type }}
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.pickup_required.id_for_label }}">Pickup Required?</label>
+                    {{ form.pickup_required }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_address.id_for_label }}">Pickup Address</label>
+                    {{ form.pickup_address }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_time.id_for_label }}">Pickup Time</label>
+                    {{ form.pickup_time }}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.delivery_required.id_for_label }}">Delivery Required?</label>
+                    {{ form.delivery_required }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_address.id_for_label }}">Delivery Address</label>
+                    {{ form.delivery_address }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_time.id_for_label }}">Delivery Time</label>
+                    {{ form.delivery_time }}
+                </div>
+            </div>
+            
+            <button type="submit" class="btn" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="modal_container" id="R_modal">
+    <div class="modal_content">
+        <div class="modal_header">
+            <h2 id="modal_title">Reservation</h2>
+        </div>
+        <div class="modal_body">
+            <form id="modal_form" class="validation-form" action="{% url 'laundry:index' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Full Name</label>
+                {{ form.name }}
+                <small class="form-text">{{ form.name.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                {{ form.phone_number }}
+                <small class="form-text">{{ form.phone_number.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form1.service_type.id_for_label }}">Service Type</label>
+                {{ form1.service_type }}
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.pickup_required.id_for_label }}">Pickup Required?</label>
+                    {{ form.pickup_required }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_address.id_for_label }}">Pickup Address</label>
+                    {{ form.pickup_address }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_time.id_for_label }}">Pickup Time</label>
+                    {{ form.pickup_time }}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.delivery_required.id_for_label }}">Delivery Required?</label>
+                    {{ form.delivery_required }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_address.id_for_label }}">Delivery Address</label>
+                    {{ form.delivery_address }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_time.id_for_label }}">Delivery Time</label>
+                    {{ form.delivery_time }}
+                </div>
+            </div>
+            
+            <button type="submit" class="btn" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal_container" id="E_modal">
+    <div class="modal_content">
+        <div class="modal_header">
+            <h2 id="modal_title">Reservation</h2>
+        </div>
+        <div class="modal_body">
+            <form id="modal_form" class="validation-form" action="{% url 'laundry:index' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Full Name</label>
+                {{ form.name }}
+                <small class="form-text">{{ form.name.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                {{ form.phone_number }}
+                <small class="form-text">{{ form.phone_number.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form2.service_type.id_for_label }}">Service Type</label>
+                {{ form2.service_type }}
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.pickup_required.id_for_label }}">Pickup Required?</label>
+                    {{ form.pickup_required }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_address.id_for_label }}">Pickup Address</label>
+                    {{ form.pickup_address }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_time.id_for_label }}">Pickup Time</label>
+                    {{ form.pickup_time }}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.delivery_required.id_for_label }}">Delivery Required?</label>
+                    {{ form.delivery_required }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_address.id_for_label }}">Delivery Address</label>
+                    {{ form.delivery_address }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_time.id_for_label }}">Delivery Time</label>
+                    {{ form.delivery_time }}
+                </div>
+            </div>
+            
+            <button type="submit" class="btn" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal_container" id="D_modal">
+    <div class="modal_content">
+        <div class="modal_header">
+            <h2 id="modal_title">Reservation</h2>
+        </div>
+        <div class="modal_body">
+            <form id="modal_form" class="validation-form" action="{% url 'laundry:index' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Full Name</label>
+                {{ form.name }}
+                <small class="form-text">{{ form.name.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                {{ form.phone_number }}
+                <small class="form-text">{{ form.phone_number.help_text }}</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form3.service_type.id_for_label }}">Service Type</label>
+                {{ form3.service_type }}
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.pickup_required.id_for_label }}">Pickup Required?</label>
+                    {{ form.pickup_required }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_address.id_for_label }}">Pickup Address</label>
+                    {{ form.pickup_address }}
+                </div>
+                
+                <div class="form-group pickup-details">
+                    <label for="{{ form.pickup_time.id_for_label }}">Pickup Time</label>
+                    {{ form.pickup_time }}
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="{{ form.delivery_required.id_for_label }}">Delivery Required?</label>
+                    {{ form.delivery_required }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_address.id_for_label }}">Delivery Address</label>
+                    {{ form.delivery_address }}
+                </div>
+                
+                <div class="form-group delivery-details">
+                    <label for="{{ form.delivery_time.id_for_label }}">Delivery Time</label>
+                    {{ form.delivery_time }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="confirmationModal" class="modal">
+    <div class="small-content">
+        <h3>Reservation Confirmed!</h3>
+        <p>Your reservation code is: <strong> {{rng_code}}</strong></p>
+    </div>                                                                                                  
+</div>
+
+
+<div id="statusModal" class="modal" data-show="{{ show_status_modal|yesno:'true,false' }}">
+  <div class="small-content">
+    <h3>Check Laundry Status</h3>
+    <form id="statusForm">
+      <input type="text" id="rngCodeInput" placeholder="Enter Reservation Code" required>
+      <button type="submit">Check</button>
+    </form>
+    <div id="statusMessage"></div>
+  </div>
+</div>
+
+
+      <script src="{% static 'script/script.js' %}"></script>
+      {% if rng_code %}
+      <script>
+        openC();  
+      </script>
+      {% endif %}
+</body>
+</html>
